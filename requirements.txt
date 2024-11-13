@@ -1,0 +1,5 @@
+fastembed 
+llama-index-vector-stores-chroma
+llama-index-llms-mistralai
+llama-index-embeddings-fastembed
+llama-index-readers-file
