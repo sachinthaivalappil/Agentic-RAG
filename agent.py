@@ -15,6 +15,12 @@ import os
 from llama_index.embeddings.fastembed import FastEmbedEmbedding
 from llama_index.core import Settings
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+
 
 
 db = chromadb.PersistentClient(path="./chroma_db")
@@ -22,7 +28,7 @@ chroma_collection = db.get_or_create_collection("multidocument-agent")
 vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-os.environ["MISTRAL_API_KEY"] = "CyX7yanKGxABR4YhSO1fEGjve5m65nZA"
+
 Settings.llm = MistralAI(model="mistral-large-latest")
 Settings.embed_model = FastEmbedEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
